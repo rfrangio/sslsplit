@@ -50,9 +50,9 @@ FEATURES+=	-DHAVE_DARWIN_LIBPROC
 endif
 XNU_VERSION?=	$(shell uname -a|sed 's/^.*root:xnu-//g'|sed 's/~.*$$//')
 OSX_VERSION?=	$(shell sw_vers -productVersion)
-ifeq ($(wildcard xnu/xnu-$(XNU_VERSION)),)
-XNU_VERSION=	$(shell awk '/# $(OSX_VERSION)$/ {print $2}' xnu/GNUmakefile)
-endif
+#ifeq ($(wildcard xnu/xnu-$(XNU_VERSION)),)
+#XNU_VERSION=	$(shell awk '/# $(OSX_VERSION)$/ {print $2}' xnu/GNUmakefile)
+#endif
 ifneq ($(wildcard xnu/xnu-$(XNU_VERSION)),)
 FEATURES+=	-DHAVE_PF
 PKG_CPPFLAGS+=	-I./xnu/xnu-$(XNU_VERSION)
